@@ -11,27 +11,38 @@ public class ProductList implements interfaces.ProductList {
         String[] values = value.split(" ");
         String description = values[0];
         String measurementType = values[1];
-        int price = Integer.valueOf(values[2]);
+        int price = Integer.parseInt(values[2]);
         return new Product(description, measurementType, price);
     }
 
     @Override
     public Product returnLastProduct() {
-        return null;
+        Product last = header;
+        while (last.sig!=null){
+            last = last.sig;
+        }
+        return last;
     }
 
     @Override
-    public void addInit() {
+    public void addEnd(String value) {
+        Product aux = createProduct(value);
 
+        if(header == null){
+            header = aux;
+        }else{
+            Product last = returnLastProduct();
+            last.sig = aux;
+        }
     }
 
     @Override
-    public void addEnd() {
-
-    }
-
-    @Override
-    public void showInfo() {
-
+    public String showInfo() {
+        Product aux = header;
+        String info = "";
+        while (aux != null){
+            info += toString() + "\n\n";
+        }
+        return info;
     }
 }
