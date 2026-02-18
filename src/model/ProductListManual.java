@@ -2,7 +2,7 @@ package model;
 
 import pojo.Product;
 
-public class ProductList implements interfaces.ProductList {
+public class ProductListManual implements interfaces.ProductList {
 
     Product header = null;
 
