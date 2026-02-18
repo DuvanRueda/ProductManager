@@ -1,10 +1,14 @@
-package model;
+package co.edu.uptc.model;
 
-import pojo.Product;
+import co.edu.uptc.pojo.Product;
 
-public class ProductListManual implements interfaces.ProductList {
+public class ProductListManual implements co.edu.uptc.interfaces.ProductList {
 
-    Product header = null;
+    Product header;
+
+    public ProductListManual(){
+        header = null;
+    }
 
     @Override
     public Product createProduct(String value) {
@@ -37,11 +41,23 @@ public class ProductListManual implements interfaces.ProductList {
     }
 
     @Override
+    public String deleteProduct(String key) {
+        Product aux = null;
+        return null;
+    }
+
+    @Override
+    public void sortList() {
+
+    }
+
+    @Override
     public String showInfo() {
         Product aux = header;
         String info = "";
         while (aux != null){
-            info += toString() + "\n\n";
+            info += aux.toString() + "\n\n";
+            aux = aux.sig;
         }
         return info;
     }

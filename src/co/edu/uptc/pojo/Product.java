@@ -1,4 +1,6 @@
-package pojo;
+package co.edu.uptc.pojo;
+
+import co.edu.uptc.util.Constants;
 
 public class Product {
     String description;
@@ -16,7 +18,7 @@ public class Product {
     @Override
     public String toString(){
 
-        return "Descripción: " + description + "\n" + "Precio: " + price + "/" + measurementType;
+            return Constants.DESCRIPTION + description + "\n" + Constants.PRICE + price + "/" + measurementType;
 
 
     }

@@ -1,6 +1,6 @@
-package view;
+package co.edu.uptc.view;
 
-import interfaces.ViewManager;
+import co.edu.uptc.interfaces.ViewManager;
 import java.util.Scanner;
 
 public class IOManager implements ViewManager {
@@ -9,14 +9,14 @@ public class IOManager implements ViewManager {
     }
 
     @Override
-    public void showList(String productList) {
+    public void showData(String productList) {
         System.out.println(productList);
     }
 
     @Override
-    public String fetchProduct() {
+    public String inputData(String smg) {
         Scanner sc = new Scanner(System.in);
-        System.out.println("Ingrese el nombre del producto:");
+        System.out.println(smg);
         return sc.nextLine();
     }
 
