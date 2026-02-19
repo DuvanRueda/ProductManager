@@ -10,23 +10,11 @@ public class Product {
     public Product sig; //Está bien poner este parametro como public o deberiamos usar un get?
 
 
-    public Product(String description, String measurementType, int price, String name) {
+    public Product(String name, String description, String measurementType, int price) {
         this.description = description;
         this.measurementType = measurementType;
         this.price = price;
         this.name = name;
-    }
-
-    
-
-
-
-    @Override
-    public String toString(){
-
-            return Constants.DESCRIPTION + description + "\n" + Constants.PRICE + price + "/" + measurementType;
-
-
     }
 
     public String getName() {
@@ -34,6 +22,18 @@ public class Product {
     }
 
     public void setName(String name) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        this.name = name;
+    }
+
+    public String getDescription(){
+        return description;
+    }
+
+    public String getMeasurementType(){
+        return measurementType;
+    }
+
+    public int getPrice(){
+        return price;
     }
 }
