@@ -7,9 +7,12 @@ public class Constants {
     public static String CLOSE_APP = "Aplicación cerrada.";
     public static String SUCCESSFUL_PROCESS = "¡Proceso exitoso!";
     public static String ENTRANCE_EXAMPLE = "Ingrese la nombre, descipción, tipo de unidad y su valor. Ej: Manzana fruta unidad 1000";
+    public static String DELETE_PRODUCT = "Ingrese el del producto que desea eliminar.";
+    public static String NON_PRODUCT = "Producto no encontrado.";
+    public static String SUCCESSFULLY_REMOVED = "Producto eliminado con exito.";
 
     //Errores
-    public static String TYPING_ERROR = "Dato mal digitado";
+    public static String TYPING_ERROR = "Dato mal digitado.";
 
     //Palabras sueltas
     public static String NAME = "Nombre: ";

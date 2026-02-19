@@ -1,6 +1,7 @@
 package co.edu.uptc.model;
 
 import co.edu.uptc.pojo.Product;
+import co.edu.uptc.util.Constants;
 
 public class ProductListManual implements co.edu.uptc.interfaces.ProductList {
 
@@ -55,8 +56,20 @@ public class ProductListManual implements co.edu.uptc.interfaces.ProductList {
 
     @Override
     public String deleteProduct(String key) {
-        Product aux = null;
-        return null;
+        Product previusProduct = null;
+        Product current = header;
+        while (current!=null){
+            if (key.equalsIgnoreCase(current.getName()) && current.equals(header)){
+                header = current.sig;
+                return Constants.SUCCESSFULLY_REMOVED;
+            } else if (key.equalsIgnoreCase(current.getName())){
+                previusProduct.sig = current.sig;
+                return Constants.SUCCESSFULLY_REMOVED;
+            }
+            previusProduct = current;
+            current = current.sig;
+        }
+        return Constants.SUCCESSFULLY_REMOVED;
     }
 
     @Override
