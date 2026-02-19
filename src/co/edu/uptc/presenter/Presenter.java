@@ -24,7 +24,7 @@ public class Presenter implements PresenterManager {
         return switch (option) {
             case "1"->showProducts();
             case "2"->addProduct();
-            case "3"->deliteProduct();
+            case "3"->deleteProduct();
             case "4"->closeApp();
             default -> Constants.TYPING_ERROR;
         };
@@ -43,7 +43,7 @@ public class Presenter implements PresenterManager {
     }
 
     @Override
-    public String deliteProduct() {
+    public String deleteProduct() {
         return Constants.SUCCESSFUL_PROCESS;
     }
 

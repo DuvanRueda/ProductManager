@@ -4,7 +4,7 @@ public interface PresenterManager {
 //    void menu(String option);
     String showProducts();
     String addProduct();
-    String deliteProduct();
+    String deleteProduct();
     String closeApp();
     void init();
 }

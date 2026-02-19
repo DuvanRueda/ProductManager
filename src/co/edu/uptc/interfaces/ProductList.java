@@ -7,6 +7,7 @@ public interface ProductList {
     public Product returnLastProduct();
     public void addEnd(String value);
     public String deleteProduct(String key);
-    public void sortList();
+    public String sortList();
     public String showInfo();
+    public int returnLength();
 }

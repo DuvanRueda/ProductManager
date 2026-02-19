@@ -26,12 +26,18 @@ public class ProductListAutomatic implements ProductList {
     }
 
     @Override
-    public void sortList() {
-
+    public String sortList() {
+        return "";
     }
 
     @Override
     public String showInfo() {
         return "";
+    }
+
+    @Override
+    public int returnLength() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'returnLength'");
     }
 }
