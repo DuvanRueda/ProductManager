@@ -80,8 +80,19 @@ public class ProductListManual implements co.edu.uptc.interfaces.ProductList {
                         .compareToIgnoreCase(nextProduct.getName()) > 0) {
 
                     String tempName = current.getName();
+                    String tempDescription = current.getDescription();
+                    String tempMeasurementType = current.getMeasurementType();
+                    int tempPrice = current.getPrice();
+
                     current.setName(nextProduct.getName());
+                    current.setDescription(nextProduct.getDescription());
+                    current.setMeasurementType(nextProduct.getMeasurementType());
+                    current.setPrice(nextProduct.getPrice());
+
                     nextProduct.setName(tempName);
+                    nextProduct.setDescription(tempDescription);
+                    nextProduct.setMeasurementType(tempMeasurementType);
+                    nextProduct.setPrice(tempPrice);
                 }
 
                 current = current.sig;

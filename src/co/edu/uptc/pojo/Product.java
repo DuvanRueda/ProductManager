@@ -28,12 +28,13 @@ public class Product {
     public String getDescription(){
         return description;
     }
+    public void setDescription(String description){this.description = description;}
 
     public String getMeasurementType(){
         return measurementType;
     }
+    public void setMeasurementType(String measurementType){this.measurementType = measurementType;}
 
-    public int getPrice(){
-        return price;
-    }
+    public int getPrice(){return price;}
+    public void setPrice(int price){this.price = price;}
 }
