@@ -54,15 +54,19 @@ public class ProductListManual implements co.edu.uptc.interfaces.ProductList {
         sortList();
     }
 
+    private boolean isValidSize(String name){
+        return name.length() < 3;
+    }
+
     @Override
     public String deleteProduct(String key) {
         Product previusProduct = null;
         Product current = header;
         while (current!=null){
-            if (key.equalsIgnoreCase(current.getName()) && current.equals(header)){
+            if (current.getName().contains(key) && current.equals(header)){
                 header = current.sig;
                 return Constants.SUCCESSFULLY_REMOVED;
-            } else if (key.equalsIgnoreCase(current.getName())){
+            } else if (current.getName().contains(key)){
                 previusProduct.sig = current.sig;
                 return Constants.SUCCESSFULLY_REMOVED;
             }
