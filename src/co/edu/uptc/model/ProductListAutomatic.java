@@ -57,7 +57,7 @@ public class ProductListAutomatic implements ProductListInterface{
         
         String info = "";
         for (int i = 0; i < returnLength(); i++) {
-            info += aux[i].getName()+"   "+ aux[i].getDescription()+"   "+aux[i].getMeasurementType()+"   "+ aux[i].getPrice()+"\n";
+            info += getProductInfo(aux[i]);
         }
         return info;
     }

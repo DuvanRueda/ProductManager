@@ -72,63 +72,41 @@ public class ProductListManual implements ProductListInterface {
         return Constants.SUCCESSFULLY_REMOVED;
     }
 
+    private Product[] toList(Product[] list){
+        Product current = header;
+        for (int i = 0; i < list.length; i++) {
+            list[i] = current;
+            current = current.sig;
+        }
+        return list;
+    }
+
     @Override
     public Product[] sortList() {//pasar esto a String y mandarlo a la vista
-
-        if (header == null || header.sig == null) {
-            //return header.toString();
-        }
-
         int length = returnLength();
-
+        Product[] aux = toList(new Product[length]);
         for (int i = 0; i < length - 1; i++) {
-
-            Product current = header;
-
             for (int j = 0; j < length - 1 - i; j++) {
-
-                Product nextProduct = current.sig;
-
-                if (current.getName()
-                        .compareToIgnoreCase(nextProduct.getName()) > 0) {
-
-                    String tempName = current.getName();
-                    String tempDescription = current.getDescription();
-                    String tempMeasurementType = current.getMeasurementType();
-                    int tempPrice = current.getPrice();
-
-                    current.setName(nextProduct.getName());
-                    current.setDescription(nextProduct.getDescription());
-                    current.setMeasurementType(nextProduct.getMeasurementType());
-                    current.setPrice(nextProduct.getPrice());
-
-                    nextProduct.setName(tempName);
-                    nextProduct.setDescription(tempDescription);
-                    nextProduct.setMeasurementType(tempMeasurementType);
-                    nextProduct.setPrice(tempPrice);
+                if (aux[j].getName().compareTo(aux[j + 1].getName()) < 0) {
+                    Product temp = aux[j];
+                    aux[j] = aux[j + 1];
+                    aux[j + 1] = temp;
                 }
-
-                current = current.sig;
             }
         }
-        StringBuilder result = new StringBuilder();
-        Product temp = header;
-
-        while (temp != null) {
-            result.append(temp.toString()).append("\n");
-            temp = temp.sig;
-        }
-
-        return null;//result.toString();
+        return aux;
     }
 
     @Override
     public String showInfo() {
-        Product aux = header;
+        if(header == null){
+            return Constants.SIZE_ERROR;
+        }
+        Product[] aux = sortList();
+
         String info = "";
-        while (aux != null) {
-            info += getProductInfo(aux) + "\n\n";
-            aux = aux.sig;
+        for (int i = 0; i < aux.length; i++) {
+            info += getProductInfo(aux[i]);
         }
         return info;
     }
