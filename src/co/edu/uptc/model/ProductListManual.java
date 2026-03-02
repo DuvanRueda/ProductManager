@@ -1,9 +1,10 @@
 package co.edu.uptc.model;
 
+import co.edu.uptc.interfaces.ProductListInterface;
 import co.edu.uptc.pojo.Product;
 import co.edu.uptc.util.Constants;
 
-public class ProductListManual implements co.edu.uptc.interfaces.ProductList {
+public class ProductListManual implements ProductListInterface {
 
     Product header;
 

@@ -7,4 +7,8 @@ public interface PresenterManager {
     String deleteProduct();
     String closeApp();
     void init();
+
+    public void setView(ViewManager view);
+    public void setModel(ProductListInterface list);
+
 }

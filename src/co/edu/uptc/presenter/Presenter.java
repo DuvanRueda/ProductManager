@@ -1,7 +1,7 @@
 package co.edu.uptc.presenter;
 
 import co.edu.uptc.interfaces.PresenterManager;
-import co.edu.uptc.interfaces.ProductList;
+import co.edu.uptc.interfaces.ProductListInterface;
 import co.edu.uptc.interfaces.ViewManager;
 import co.edu.uptc.model.ProductListManual;
 import co.edu.uptc.util.Constants;
@@ -9,13 +9,11 @@ import co.edu.uptc.view.IOManager;
 
 public class Presenter implements PresenterManager {
 
-    private ProductList list;
+    private ProductListInterface list;
     private ViewManager io;
     private boolean isFiniseh;
 
     public Presenter() {
-        list = new ProductListManual();
-        io = new IOManager();
         isFiniseh = false;
     }
 
@@ -60,5 +58,15 @@ public class Presenter implements PresenterManager {
             result = menu(result);
             io.showData(result);
         }
+    }
+
+    @Override
+    public void setView(ViewManager view) {
+       io = view;
+    }
+
+    @Override
+    public void setModel(ProductListInterface list) {
+        this.list = list;
     }
 }

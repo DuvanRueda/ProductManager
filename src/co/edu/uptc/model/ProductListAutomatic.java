@@ -1,9 +1,9 @@
 package co.edu.uptc.model;
 
-import co.edu.uptc.interfaces.ProductList;
+import co.edu.uptc.interfaces.ProductListInterface;
 import co.edu.uptc.pojo.Product;
 
-public class ProductListAutomatic implements ProductList {
+public class ProductListAutomatic implements ProductListInterface {
     @Override
     public Product createProduct(String value) {
         return null;

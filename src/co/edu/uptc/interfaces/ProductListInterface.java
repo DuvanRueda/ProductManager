@@ -3,7 +3,7 @@ package co.edu.uptc.interfaces;
 import co.edu.uptc.pojo.Product;
 import co.edu.uptc.util.Constants;
 
-public interface ProductList {
+public interface ProductListInterface {
     public Product createProduct(String value);
     public Product returnLastProduct();
     public void addEnd(String value);

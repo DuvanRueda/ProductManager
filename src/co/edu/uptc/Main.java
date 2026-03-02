@@ -1,11 +1,10 @@
 package co.edu.uptc;
 
-import co.edu.uptc.interfaces.PresenterManager;
-import co.edu.uptc.presenter.Presenter;
+import co.edu.uptc.presenter.Runner;
 
 public class Main {
     public static void main(String[] args){
-        PresenterManager presenter = new Presenter();
-        presenter.init();
+        Runner run = new Runner();
+        run.start();
     }
 }
