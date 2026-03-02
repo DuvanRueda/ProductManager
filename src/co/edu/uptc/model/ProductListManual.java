@@ -52,11 +52,6 @@ public class ProductListManual implements ProductListInterface {
             Product last = returnLastProduct();
             last.sig = aux;
         }
-        sortList();
-    }
-
-    private boolean isValidSize(String name){
-        return name.length() < 3;
     }
 
     @Override
@@ -78,10 +73,10 @@ public class ProductListManual implements ProductListInterface {
     }
 
     @Override
-    public String sortList() {//pasar esto a String y mandarlo a la vista
+    public Product[] sortList() {//pasar esto a String y mandarlo a la vista
 
         if (header == null || header.sig == null) {
-            return header.toString();
+            //return header.toString();
         }
 
         int length = returnLength();
@@ -124,7 +119,7 @@ public class ProductListManual implements ProductListInterface {
             temp = temp.sig;
         }
 
-        return result.toString();
+        return null;//result.toString();
     }
 
     @Override

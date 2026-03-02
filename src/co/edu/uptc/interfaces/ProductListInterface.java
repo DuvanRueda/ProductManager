@@ -8,11 +8,11 @@ public interface ProductListInterface {
     public Product returnLastProduct();
     public void addEnd(String value);
     public String deleteProduct(String key);
-    public String sortList();
+    public Product[] sortList();
     public String showInfo();
     public int returnLength();
 
-    default  String getProductInfo(Product product){
+    default String getProductInfo(Product product){
         return Constants.NAME + product.getName() + "\n" + Constants.DESCRIPTION + product.getDescription() + "\n" + Constants.PRICE + product.getPrice()+"/"+product.getMeasurementType();
     }
 }

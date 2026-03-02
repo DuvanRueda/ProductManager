@@ -26,8 +26,8 @@ public class ProductListAutomatic implements ProductListInterface {
     }
 
     @Override
-    public String sortList() {
-        return "";
+    public Product[] sortList() {
+        return null;
     }
 
     @Override
