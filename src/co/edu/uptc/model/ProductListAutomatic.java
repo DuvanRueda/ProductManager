@@ -28,11 +28,7 @@ public class ProductListAutomatic implements ProductListInterface{
 
     @Override
     public String deleteProduct(String key) {
-        for (Product product : list) {
-            if (product.getName().contains(key)) {
-                list.remove(list.indexOf(product));
-            }
-        }
+        list.removeIf(product -> product.getName().contains(key));
         return Constants.SUCCESSFULLY_REMOVED;
     }
 
@@ -45,11 +41,9 @@ public class ProductListAutomatic implements ProductListInterface{
 
     @Override
     public String showInfo(){
-        if(returnLength()<=0){
+        if(returnLength()<=0)
             return Constants.SIZE_ERROR;
-        }
         Product[] aux = sortList();
-        
         String info = "";
         for (int i = 0; i < returnLength(); i++) {
             info += getProductInfo(aux[i]);

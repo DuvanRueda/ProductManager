@@ -13,6 +13,6 @@ public interface ProductListInterface {
     public int returnLength();
 
     default String getProductInfo(Product product){
-        return Constants.NAME + product.getName() + "\n" + Constants.DESCRIPTION + product.getDescription() + "\n" + Constants.PRICE + product.getPrice()+"/"+product.getMeasurementType();
+        return Constants.NAME + product.getName() + "\n" + Constants.DESCRIPTION + product.getDescription() + "\n" + Constants.PRICE + product.getPrice()+"/"+product.getMeasurementType()+"\n\n";
     }
 }

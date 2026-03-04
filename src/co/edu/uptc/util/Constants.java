@@ -9,7 +9,7 @@ public class Constants {
     public static final String INPUT_NAME = "Ingrese el nombre del producto.";
     public static final String INPUT_DESCRIPTION = "Ingrese la descripción del producto.";
     public static final String INPUT_MEASUREMENT_TYPE = "Ingrese la unidad de medida del producto.";
-    public static final String INPUT_PRICE = "Ingrese el precio del producto.";
+    public static final String INPUT_PRICE = "Ingrese el precio  del producto.";
     public static final String DELETE_PRODUCT = "Ingrese el del producto que desea eliminar.";
     public static final String NON_PRODUCT = "Producto no encontrado.";
     public static final String SUCCESSFULLY_REMOVED = "Producto eliminado con exito.";

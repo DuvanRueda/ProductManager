@@ -51,18 +51,12 @@ public class ProductListManual implements ProductListInterface {
 
     @Override
     public String deleteProduct(String key) {
-        Product previusProduct = null;
-        Product current = header;
-        while (current!=null){
-            if (current.getName().contains(key)){
-                if (previusProduct == null){
-                    header = header.sig;
-                }else
-                    previusProduct.sig = current.sig;
+        for (Product current = header, previous = null; current != null; previous = current, current = current.sig) {
+            if (current.getName().contains(key)) {
+                if (previous == null) header = current.sig;
+                else previous.sig = current.sig;
                 return Constants.SUCCESSFULLY_REMOVED;
             }
-            previusProduct = current;
-            current = current.sig;
         }
         return Constants.NON_PRODUCT;
     }
@@ -82,15 +76,19 @@ public class ProductListManual implements ProductListInterface {
         Product[] aux = toList(new Product[length]);
         for (int i = 0; i < length - 1; i++) {
             for (int j = 0; j < length - 1 - i; j++) {
-                if (aux[j].getName().compareTo(aux[j + 1].getName()) < 0) {
-                    Product temp = aux[j];
-                    aux[j] = aux[j + 1];
-                    aux[j + 1] = temp;
-                }
+                    swap(aux,i,j);
             }
         }
         return aux;
     }
+
+    private void swap(Product[] array, int i, int j) {
+        Product temp = array[i];
+        array[i] = array[j];
+        array[j] = temp;
+    }
+
+
 
     @Override
     public String showInfo() {
