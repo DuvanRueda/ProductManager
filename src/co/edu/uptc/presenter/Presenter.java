@@ -18,7 +18,6 @@ public class Presenter implements PresenterManager {
 
     //    @Override
     public String menu(String option) {
-        try {
             return switch (option) {
                 case "1"->showProducts();
                 case "2"->addProduct();
@@ -26,9 +25,6 @@ public class Presenter implements PresenterManager {
                 case "4"->closeApp();
                 default -> Constants.TYPING_ERROR;
             };
-        } catch (Exception e) {
-            return e.getMessage();
-        }
     }
 
     @Override
@@ -38,18 +34,42 @@ public class Presenter implements PresenterManager {
 
     @Override
     public String addProduct() {
-        String name = Helper.isBlank(io.inputData(Constants.INPUT_NAME));
-        String description = Helper.isBlank(io.inputData(Constants.INPUT_DESCRIPTION));
-        String measurementType = Helper.isBlank(io.inputData(Constants.INPUT_MEASUREMENT_TYPE));
-        int price = Helper.toInt(io.inputData(Constants.INPUT_PRICE));
+        String name = requestValidString(Constants.INPUT_NAME);
+        String description = requestValidString(Constants.INPUT_DESCRIPTION);
+        String measurementType = requestValidString(Constants.INPUT_MEASUREMENT_TYPE);
+        int price = requestValidInt(Constants.INPUT_PRICE);
         list.addEnd(name,description,measurementType,price);
         return Constants.SUCCESSFUL_PROCESS;
     }
 
+    private String requestValidString(String message) {
+        while (true) {
+            try {
+                return Helper.isBlank(io.inputData(message));
+            } catch (IllegalArgumentException e) {
+                io.showData(e.getMessage());
+            }
+        }
+    }
+
+    private int requestValidInt(String message) {
+        while (true) {
+            try {
+                return Helper.toInt(io.inputData(message));
+            } catch (IllegalArgumentException e) {
+                io.showData(e.getMessage());
+            }
+        }
+    }
+
     @Override
     public String deleteProduct() {
+        try {
             String value = Helper.isBlank(io.inputData(Constants.DELETE_PRODUCT));
             return list.deleteProduct(value);
+        } catch (Exception e) {
+            return e.getMessage();
+        }
     }
 
     @Override
