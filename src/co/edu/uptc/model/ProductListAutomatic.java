@@ -10,12 +10,7 @@ public class ProductListAutomatic implements ProductListInterface{
     ArrayList<Product> list = new ArrayList<>();
 
     @Override
-    public Product createProduct(String value) {
-        String[] values = value.split(" ");
-        String name = values[0];
-        String description = values[1];
-        String measurementType = values[2];
-        int price = Integer.parseInt(values[3]);
+    public Product createProduct(String name, String description, String measurementType, int price) {
         return new Product(name, description, measurementType, price);
          
     }
@@ -26,8 +21,8 @@ public class ProductListAutomatic implements ProductListInterface{
     }
 
     @Override
-    public void addEnd(String value) {
-        Product aux = createProduct(value);
+    public void addEnd(String name, String description, String measurementType, int price) {
+        Product aux = createProduct(name, description, measurementType, price);
         list.addLast(aux);
     }
 

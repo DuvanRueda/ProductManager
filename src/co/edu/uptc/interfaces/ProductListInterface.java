@@ -4,9 +4,9 @@ import co.edu.uptc.pojo.Product;
 import co.edu.uptc.util.Constants;
 
 public interface ProductListInterface {
-    public Product createProduct(String value);
+    public Product createProduct(String name, String description, String measurementType, int price);
+    public void addEnd(String name, String description, String measurementType, int price);
     public Product returnLastProduct();
-    public void addEnd(String value);
     public String deleteProduct(String key);
     public Product[] sortList();
     public String showInfo();

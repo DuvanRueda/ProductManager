@@ -3,6 +3,7 @@ package co.edu.uptc.model;
 import co.edu.uptc.interfaces.ProductListInterface;
 import co.edu.uptc.pojo.Product;
 import co.edu.uptc.util.Constants;
+import co.edu.uptc.util.Helper;
 
 public class ProductListManual implements ProductListInterface {
 
@@ -13,13 +14,19 @@ public class ProductListManual implements ProductListInterface {
     }
 
     @Override
-    public Product createProduct(String value) {
-        String[] values = value.split(" ");
-        String name = values[0];
-        String description = values[1];
-        String measurementType = values[2];
-        int price = Integer.parseInt(values[3]);
+    public Product createProduct(String name, String description, String measurementType, int price) {
         return new Product(name, description, measurementType, price);
+    }
+
+    @Override
+    public void addEnd(String name, String description, String measurementType, int price) {
+        Product aux = createProduct(name, description, measurementType, price);
+        if (header == null) {
+            header = aux;
+        } else {
+            Product last = returnLastProduct();
+            last.sig = aux;
+        }
     }
 
     @Override
@@ -43,33 +50,21 @@ public class ProductListManual implements ProductListInterface {
     }
 
     @Override
-    public void addEnd(String value) {
-        Product aux = createProduct(value);
-
-        if (header == null) {
-            header = aux;
-        } else {
-            Product last = returnLastProduct();
-            last.sig = aux;
-        }
-    }
-
-    @Override
     public String deleteProduct(String key) {
         Product previusProduct = null;
         Product current = header;
         while (current!=null){
-            if (current.getName().contains(key) && current.equals(header)){
-                header = current.sig;
-                return Constants.SUCCESSFULLY_REMOVED;
-            } else if (current.getName().contains(key)){
-                previusProduct.sig = current.sig;
+            if (current.getName().contains(key)){
+                if (previusProduct == null){
+                    header = header.sig;
+                }else
+                    previusProduct.sig = current.sig;
                 return Constants.SUCCESSFULLY_REMOVED;
             }
             previusProduct = current;
             current = current.sig;
         }
-        return Constants.SUCCESSFULLY_REMOVED;
+        return Constants.NON_PRODUCT;
     }
 
     private Product[] toList(Product[] list){
@@ -82,7 +77,7 @@ public class ProductListManual implements ProductListInterface {
     }
 
     @Override
-    public Product[] sortList() {//pasar esto a String y mandarlo a la vista
+    public Product[] sortList() {
         int length = returnLength();
         Product[] aux = toList(new Product[length]);
         for (int i = 0; i < length - 1; i++) {
@@ -99,11 +94,9 @@ public class ProductListManual implements ProductListInterface {
 
     @Override
     public String showInfo() {
-        if(header == null){
+        if(header == null)
             return Constants.SIZE_ERROR;
-        }
         Product[] aux = sortList();
-
         String info = "";
         for (int i = 0; i < aux.length; i++) {
             info += getProductInfo(aux[i]);
